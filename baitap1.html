@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bài 1</title>
+    <style>
+      .products {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .product {
+        border: 1px solid #ccc;
+        padding: 10px;
+        width: 120px;
+      }
+    </style>
+  </head>
+  <body>
+    <input id="search" placeholder="Tìm sản phẩm" />
+    <button onclick="search()">Tìm</button>
+    <p id="msg"></p>
+
+    <div class="products" id="list"></div>
+
+    <script>
+      const products = ["Laptop", "Phone", "Tablet", "Mouse", "Keyboard"];
+
+      function render(arr) {
+        list.innerHTML = "";
+        arr.forEach(
+          (p) => (list.innerHTML += `<div class="product">${p}</div>`),
+        );
+      }
+
+      function search() {
+        const key = search.value.toLowerCase().replace(/</g, "");
+        const rs = products.filter((p) => p.toLowerCase().includes(key));
+        msg.textContent = rs.length ? "" : "Không tìm thấy";
+        render(rs);
+      }
+      render(products);
+    </script>
+  </body>
+</html>

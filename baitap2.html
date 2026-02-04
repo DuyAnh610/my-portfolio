@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bài 2</title>
+    <style>
+      form {
+        max-width: 300px;
+        margin: auto;
+      }
+      input,
+      button {
+        width: 100%;
+        margin: 5px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="f">
+      <input id="name" placeholder="Tên" required />
+      <input id="email" placeholder="Email" required />
+      <input id="pass" type="password" placeholder="Mật khẩu" />
+      <label><input type="checkbox" id="ok" /> Đồng ý</label>
+      <button>Đăng ký</button>
+    </form>
+
+    <script>
+      f.onsubmit = (e) => {
+        e.preventDefault();
+        if (!/\S+@\S+\.\S+/.test(email.value)) return alert("Email sai");
+        if (!/(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}/.test(pass.value))
+          return alert("Mật khẩu yếu");
+        if (!ok.checked) return alert("Chưa đồng ý");
+
+        localStorage.setItem("user", JSON.stringify({ email: email.value }));
+        alert("Đăng ký thành công");
+      };
+    </script>
+  </body>
+</html>

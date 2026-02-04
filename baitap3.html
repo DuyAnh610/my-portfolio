@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bài 3</title>
+    <style>
+      #t {
+        font-size: 40px;
+      }
+      .warn {
+        color: red;
+        animation: blink 1s infinite;
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="t"></div>
+
+    <script>
+      let s = 600;
+      const i = setInterval(() => {
+        t.textContent =
+          String(Math.floor(s / 60)).padStart(2, "0") +
+          ":" +
+          String(s % 60).padStart(2, "0");
+        if (s < 60) t.classList.add("warn");
+        if (s-- <= 0) {
+          clearInterval(i);
+          alert("Hết giờ");
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
